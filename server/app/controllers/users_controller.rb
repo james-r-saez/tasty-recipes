@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     username = params[:username]
     password = params[:password]
 
-    new_user = User.create({
+    new_user = User.create!({
       password: password,
       username: username
     })
