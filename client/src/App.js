@@ -7,19 +7,11 @@ import Register from './components/Register';
 import TokenService from './services/TokenService';
 import './App.css';
 
-// TESTING 2 TESTING 2 TESTING 2 TESTING 2 TESTING 2
-// import RecipeList from './components/RecipeList';
-// import NewRecipeForm from './components/NewRecipeForm';
-
-
 class App extends Component {
   // api call for creating a new user
   // note that TokenService.save with the token is called
   // may also want to setState with the user data and
   // whether or not the user is logged in
-
-
-  /* TESTING 1 TESTING 1 TESTING 1 TESTING 1 TESTING 1 TESTING 1 TESTING 1 TESTING 1 */
 
   constructor(props) {
   super(props);
@@ -69,7 +61,7 @@ class App extends Component {
 
 
         <ul>
-          {ingredients}
+          {JSON.stringify(ingredients)}
         </ul>
       </div>
     )
@@ -181,25 +173,8 @@ class App extends Component {
           </Switch>
         </BrowserRouter>
 
-        {/* TESTING 1 TESTING 1 TESTING 1 TESTING 1 TESTING 1 TESTING 1 TESTING 1 TESTING 1 */}
         {this.state.loaded ? this.renderRecipeData() : 'loading'}
         {this.renderButtons()}
-
-
-{/* TESTING 222222222222222 */}
-
-        {/* <NewRecipeForm addFormSubmit={this.addFormSubmit} />
-        {this.state.apiDataLoaded ? (
-          <RecipeList
-            recipes={this.state.apiData}
-            currentlyEditing={this.state.currentlyEditing}
-            setEditing={this.setEditing}
-            deleteRecipe={this.deleteRecipe}
-            editFormSubmit={this.editFormSubmit}
-          />
-        ) : (
-          <p>Loading...</p>
-        )} */}
 
       </div>
     );
