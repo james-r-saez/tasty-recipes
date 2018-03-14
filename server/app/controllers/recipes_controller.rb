@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
 
 	def show
 		recipe = Recipe.find(params[:id])
-		render json: recipe
+		render json: recipe.to_json(:include => { :ingredients => { :only => [:id, :name, :quantity] }})
 	end
 
 	def create
