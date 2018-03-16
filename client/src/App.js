@@ -73,11 +73,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
-          Weird button: <button onClick={this.authClick.bind(this)}>Weird Button</button>
-          <p><button onClick={this.checkLogin.bind(this)}>Check If Logged In</button></p>
-          <p><button onClick={this.logout.bind(this)}>Logout</button></p>
-        </div>
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Home} />
