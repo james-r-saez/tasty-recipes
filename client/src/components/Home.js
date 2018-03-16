@@ -6,7 +6,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <div>I'm Home</div>
+        <div>Welcome Home</div>
         <Link to="/register"><button>Register</button></Link>
         <br />
         <Link to="/login"><button>Login</button></Link>

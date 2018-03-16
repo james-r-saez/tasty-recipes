@@ -13,32 +13,41 @@ export default class Create extends Component {
       url: ''
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  componentDidMount() {
-    const url = `http://localhost:3000/recipes/${this.state.recipe}`;
-    axios.post(url)
+  postRecipeData() {
+    const url = `http://localhost:3000/recipes/`;
+    axios({
+      url: url,
+      data: {recipe: {name: this.state.name, instruction: this.state.instructions, time_required: this.state.time}}
+    })
       .then(res => {
         this.setState({
           data: res.data,
           loaded: true
         })
-        console.log(res.data)
       })
       .catch(err => {
         console.log('ERROR');
       });
     }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  componentDidMount() {
+    this.postRecipeData()
   }
 
   handleSubmit(event) {
+    this.postRecipeData();
     alert('A recipe was submitted: ' + this.state.value);
     event.preventDefault();
+  }
+
+  handleInputChange(e){
+    e.preventDefault();
+    const target = e.target;
+    this.setState({[target.name]: target.value});
   }
 
   render() {
@@ -46,24 +55,24 @@ export default class Create extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Recipe Name:
-          <textarea value={this.state.value} onChange={this.handleChange} />
+          <textarea name="name" value={this.state.name} onChange={this.handleInputChange}/>
         </label>
 
         <label>
           Recipe Instructions:
-          <textarea value={this.state.value} onChange={this.handleChange} />
+          <textarea name="instructions" value={this.state.instrutions} onChange={this.handleInputChange}  />
         </label>
 
         <label>
           Recipe Time Needed:
-          <textarea value={this.state.value} onChange={this.handleChange} />
+          <textarea name="time" value={this.state.value} onChange={this.handleInputChange} />
         </label>
 
         <label>
           Image Url:
-          <textarea value={this.state.value} onChange={this.handleChange} />
+          <textarea name="url" value={this.state.value} onChange={this.handleInputChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit"/>
       </form>
     );
   }
